@@ -11,7 +11,9 @@ import SwiftUI
 struct VisionTimerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TimerView()
+                .persistentSystemOverlays(.hidden)
         }
+        .windowStyle(.plain)
     }
 }
