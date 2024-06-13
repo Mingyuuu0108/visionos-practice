@@ -9,111 +9,112 @@ import SwiftUI
 
 struct TimerView: View {
     @StateObject private var viewModel = TimerViewModel()
-    @State private var isShowSheet = false
-    @State private var isShowDialog = false
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            HStack(spacing: 8) {
-                Image(systemName: "bell.fill")
-                    .foregroundStyle(.white)
-                Text("\(viewModel.getAlarmEndTime())")
-                    .foregroundStyle(.white)
-                    .font(.system(size: 20, weight: .semibold))
-            }
-            .padding(.top, 50)
-            Text("\(viewModel.getTimeRemaining())")
-                .foregroundStyle(.white)
-                .font(.system(size: 80, weight: .semibold))
-                .onTapGesture {
-                    isShowSheet.toggle()
+        ZStack {
+            VStack(alignment: .center, spacing: 0) {
+                HStack(spacing: 8) {
+                    Image(systemName: "bell.fill")
+                        .foregroundStyle(Sources.label)
+                    Text("\(viewModel.getAlarmEndTime())")
+                        .foregroundStyle(Sources.label)
+                        .font(.system(size: 20, weight: .semibold))
                 }
-            Spacer()
-            HStack {
-                if viewModel.timerState != .initialized {
-                    Button {
-                        isShowDialog.toggle()
-                    } label: {
-                        Text("초기화")
-                            .frame(width: 60, height: 60)
+                .padding(.top, 50)
+                Text("\(viewModel.getTimeRemaining())")
+                    .foregroundStyle(Sources.label)
+                    .font(.system(size: 80, weight: .semibold))
+                    .onTapGesture {
+                        viewModel.isShowTimeSetterDialog.toggle()
                     }
-                    .clipShape(
-                        Capsule()
-                    )
-                }
                 Spacer()
-                switch viewModel.timerState {
-                case .initialized:
+                HStack {
+                    if viewModel.timerState != .initialized {
+                        Button {
+                            viewModel.resetTimer()
+                        } label: {
+                            Text("초기화")
+                                .frame(width: 60, height: 60)
+                        }
+                        .clipShape(
+                            Capsule()
+                        )
+                    }
                     Spacer()
-                case .finished:
-                    Button {
-                        viewModel.setTimer(time: 300)
-                        viewModel.startTimer()
-                    } label: {
-                        Text("5분 더")
-                            .frame(width: 60, height: 60)
+                    switch viewModel.timerState {
+                    case .initialized:
+                        Spacer()
+                    case .finished:
+                        Button {
+                            viewModel.setTimer(time: 300)
+                            viewModel.startTimer()
+                        } label: {
+                            Text("5분 더")
+                                .frame(width: 60, height: 60)
+                        }
+                        .clipShape(
+                            Capsule()
+                        )
+                    case .running:
+                        Button {
+                            viewModel.stopTimer()
+                        } label: {
+                            Text("정지")
+                                .frame(width: 60, height: 60)
+                        }
+                        .clipShape(
+                            Capsule()
+                        )
+                    case .stopped:
+                        Button {
+                            viewModel.startTimer()
+                        } label: {
+                            Text("시작")
+                                .frame(width: 60, height: 60)
+                        }
+                        .clipShape(
+                            Capsule()
+                        )
                     }
-                    .clipShape(
-                        Capsule()
-                    )
-                case .running:
-                    Button {
-                        viewModel.stopTimer()
-                    } label: {
-                        Text("정지")
-                            .frame(width: 60, height: 60)
-                    }
-                    .clipShape(
-                        Capsule()
-                    )
-                case .stopped:
-                    Button {
-                        viewModel.startTimer()
-                    } label: {
-                        Text("시작")
-                            .frame(width: 60, height: 60)
-                    }
-                    .clipShape(
-                        Capsule()
-                    )
                 }
+                .frame(width: 300)
+                .padding(.bottom, 50)
             }
-            .frame(width: 300)
-            .padding(.bottom, 50)
-        }
-        .frame(maxWidth: 500, maxHeight: 500)
-        .background(.red)
-        .sheet(isPresented: $isShowSheet) {
-            VStack {
-                Text("타이머 시간 10초 추가")
-                Button {
-                    isShowSheet.toggle()
-                    viewModel.setTimer(time: 3)
-                } label: {
-                    Text("설정")
-                }
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.blue)
-        }
-        .sheet(isPresented: $isShowDialog) {
-            VStack {
-                Text("타이머를 초기화 하시겠습니까?")
-                HStack(spacing: 20) {
-                    Button("취소") {
-                        isShowDialog.toggle()
+            .frame(maxWidth: 500, maxHeight: 500)
+            .background(Sources.background)
+            .sheet(isPresented: $viewModel.isShowTimeSetterDialog) {
+                VStack {
+                    Text("타이머 시간 10초로 설정")
+                    Button {
+                        viewModel.isShowTimeSetterDialog.toggle()
+                        viewModel.setTimer(time: 10)
+                    } label: {
+                        Text("설정")
                     }
-                    .frame(width: 100)
-                    Button("확인") {
-                        viewModel.resetTimer()
-                        isShowDialog.toggle()
-                    }
-                    .frame(width: 100)
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Sources.container)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.black)
+            .sheet(isPresented: $viewModel.isShowResetDialog) {
+                VStack {
+                    Text("타이머를 초기화 하시겠습니까?")
+                    HStack(spacing: 20) {
+                        Button("취소") {
+                            viewModel.isShowResetDialog.toggle()
+                        }
+                        .frame(width: 100)
+                        Button("확인") {
+                            viewModel.resetTimer()
+                            viewModel.isShowResetDialog.toggle()
+                        }
+                        .frame(width: 100)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Sources.container)
+            }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

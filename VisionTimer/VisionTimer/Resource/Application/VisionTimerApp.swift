@@ -13,6 +13,7 @@ struct VisionTimerApp: App {
         WindowGroup {
             TimerView()
                 .persistentSystemOverlays(.hidden)
+                .preferredSurroundingsEffect(.systemDark)
         }
         .windowStyle(.plain)
     }

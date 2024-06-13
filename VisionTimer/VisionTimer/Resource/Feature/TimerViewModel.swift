@@ -9,6 +9,9 @@ import SwiftUI
 import AVFAudio
 
 class TimerViewModel: ObservableObject {
+    @Published var isShowTimeSetterDialog: Bool = false
+    @Published var isShowResetDialog: Bool = false
+    
     enum TimerState {
         case initialized
         case finished
@@ -23,7 +26,7 @@ class TimerViewModel: ObservableObject {
     
     // Timer method
     func setTimer(time: Int) {
-        timeRemaining += time
+        timeRemaining = time
         timeRemaining > 0 ? (timerState = .stopped) : (timerState = .initialized)
     }
     
@@ -52,9 +55,15 @@ class TimerViewModel: ObservableObject {
     
     // Audio & Video method
     private func playBackgroundMusic() {
-        guard let url = Bundle.main.url(forResource: "rain", withExtension: "wav") else { return }
+        guard let url = Bundle.main.url(
+            forResource: Sources.rain[0], withExtension: Sources.rain[1]
+        ) else {
+            print("파일 없음")
+            return
+        }
         do {
             player = try AVAudioPlayer(contentsOf: url)
+            player?.numberOfLoops = -1
             player?.play()
             print("play background music")
         } catch {
@@ -63,7 +72,9 @@ class TimerViewModel: ObservableObject {
     }
     
     private func playAlarmSound() {
-        guard let url = Bundle.main.url(forResource: "alarm", withExtension: "wav") else { return }
+        guard let url = Bundle.main.url(
+            forResource: Sources.alarm[0], withExtension: Sources.alarm[1]
+        ) else { return }
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player?.play()
