@@ -15,6 +15,6 @@ struct VisionTimerApp: App {
                 .persistentSystemOverlays(.hidden)
                 .preferredSurroundingsEffect(.systemDark)
         }
-        .windowStyle(.plain)
+        .windowStyle(.automatic)
     }
 }

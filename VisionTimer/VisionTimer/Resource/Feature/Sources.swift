@@ -19,6 +19,9 @@ public enum Sources {
     //Image
     static let triangle = Image("Triangle")
     static let clockwiseArrow = Image("ClockwiseArrow")
+    static let cat1 = Image("SleepingCat")
+    static let cat2 = Image("Wakeup")
+    
     //Sound
     static let alarm = "Alarm.wav".split(separator: ".").map { String($0) }
     static let rain = "Rain.wav".split(separator: ".").map { String($0) }

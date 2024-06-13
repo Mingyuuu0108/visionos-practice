@@ -11,6 +11,7 @@ import AVFAudio
 class TimerViewModel: ObservableObject {
     @Published var isShowTimeSetterDialog: Bool = false
     @Published var isShowResetDialog: Bool = false
+    @Published var isShaking = false
     
     enum TimerState {
         case initialized
@@ -94,7 +95,7 @@ class TimerViewModel: ObservableObject {
     
     // UI method
     func onTapTimeSetter() {
-        if timerState == .initialized {
+        if timerState == .initialized || timerState == .stopped {
             isShowTimeSetterDialog.toggle()
         }
     }
