@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		521413C52C19E82100C15DC4 /* alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 521413C42C19E82100C15DC4 /* alarm.wav */; };
+		521413C92C1A823A00C15DC4 /* rain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 521413C82C1A823A00C15DC4 /* rain.wav */; };
 		52CEA0662C19BBCD00293A81 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 52CEA0652C19BBCD00293A81 /* RealityKitContent */; };
 		52CEA0682C19BBCD00293A81 /* VisionTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CEA0672C19BBCD00293A81 /* VisionTimerApp.swift */; };
 		52CEA06C2C19BBCE00293A81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52CEA06B2C19BBCE00293A81 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		521413C42C19E82100C15DC4 /* alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alarm.wav; sourceTree = "<group>"; };
+		521413C82C1A823A00C15DC4 /* rain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rain.wav; sourceTree = "<group>"; };
 		52CEA0602C19BBCD00293A81 /* VisionTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CEA0642C19BBCD00293A81 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		52CEA0672C19BBCD00293A81 /* VisionTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTimerApp.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		521413C32C19DB8600C15DC4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				521413C82C1A823A00C15DC4 /* rain.wav */,
 				521413C42C19E82100C15DC4 /* alarm.wav */,
 				52CEA06B2C19BBCE00293A81 /* Assets.xcassets */,
 				52CEA0702C19BBCE00293A81 /* Info.plist */,
@@ -211,6 +214,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521413C92C1A823A00C15DC4 /* rain.wav in Resources */,
 				521413C52C19E82100C15DC4 /* alarm.wav in Resources */,
 				52CEA06C2C19BBCE00293A81 /* Assets.xcassets in Resources */,
 			);

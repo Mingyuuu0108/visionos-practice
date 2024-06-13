@@ -21,26 +21,45 @@ class TimerViewModel: ObservableObject {
     private var timer: Timer?
     private var player: AVAudioPlayer?
     
-    func startTimer(duration: Int) {
-        timeRemaining = duration
+    // Timer method
+    func setTimer(time: Int) {
+        timeRemaining += time
+        timeRemaining > 0 ? (timerState = .stopped) : (timerState = .initialized)
+    }
+    
+    func startTimer() {
         timerState = .running
+        playBackgroundMusic()
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
             self.timeRemaining -= 1
-            
             if self.timeRemaining < 1 {
-                self.timerState = .finished
-                self.playAlarmSound()
                 self.timer?.invalidate()
+                self.player?.stop()
+                self.playAlarmSound()
+                self.timerState = .finished
             }
         }
     }
     
-    func stopAlarmSound() {
-        player?.stop()
+    func stopTimer() {
+        player?.pause()
+        timer?.invalidate()
         timerState = .stopped
+    }
+    
+    // Audio & Video method
+    private func playBackgroundMusic() {
+        guard let url = Bundle.main.url(forResource: "rain", withExtension: "wav") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+            print("play background music")
+        } catch {
+            print("missing rain.wav file")
+        }
     }
     
     private func playAlarmSound() {
@@ -48,12 +67,20 @@ class TimerViewModel: ObservableObject {
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player?.play()
-            print("playing")
+            print("play alarm sound")
         } catch {
             print("missing alarm.wav file")
         }
     }
     
+    func resetTimer() {
+        timeRemaining = 0
+        timer?.invalidate()
+        player?.stop()
+        timerState = .initialized
+    }
+    
+    // UI method
     func getTimeRemaining() -> String {
         let min = (timeRemaining / 60) < 10 ? "0\(timeRemaining / 60)" : "\(timeRemaining / 60)"
         let sec = (timeRemaining % 60) < 10 ? "0\(timeRemaining % 60)" : "\(timeRemaining % 60)"
