@@ -25,63 +25,101 @@ struct TimerView: View {
                     .foregroundStyle(Sources.label)
                     .font(.system(size: 80, weight: .semibold))
                     .onTapGesture {
-                        viewModel.isShowTimeSetterDialog.toggle()
+                        viewModel.onTapTimeSetter()
                     }
                 Spacer()
                 HStack {
-                    if viewModel.timerState != .initialized {
-                        Button {
-                            viewModel.resetTimer()
-                        } label: {
-                            Text("초기화")
+                    VStack(spacing: 10) {
+                        if viewModel.timerState != .initialized {
+                            Button {
+                                viewModel.resetTimer()
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .frame(width: 3, height: 28)
+                                        .foregroundStyle(Sources.label)
+                                        .clipShape(RoundedRectangle(cornerRadius: 3))
+                                        .rotationEffect(.degrees(45))
+                                    Rectangle()
+                                        .frame(width: 3, height: 28)
+                                        .foregroundStyle(Sources.label)
+                                        .clipShape(RoundedRectangle(cornerRadius: 3))
+                                        .rotationEffect(.degrees(135))
+                                }
                                 .frame(width: 60, height: 60)
+                            }
+                            .clipShape(
+                                Capsule()
+                            )
+                            Text("초기화")
+                                .foregroundStyle(Sources.label)
+                                .font(.system(size: 16, weight: .medium))
                         }
-                        .clipShape(
-                            Capsule()
-                        )
                     }
                     Spacer()
-                    switch viewModel.timerState {
-                    case .initialized:
-                        Spacer()
-                    case .finished:
-                        Button {
-                            viewModel.setTimer(time: 300)
-                            viewModel.startTimer()
-                        } label: {
+                    VStack(spacing: 10) {
+                        switch viewModel.timerState {
+                        case .initialized:
+                            EmptyView()
+                        case .finished:
+                            Button {
+                                viewModel.setTimer(time: 300)
+                                viewModel.startTimer()
+                            } label: {
+                                Sources.clockwiseArrow
+                                    .frame(width: 60, height: 60)
+                            }
+                            .background(.white)
+                            .clipShape(
+                                Capsule()
+                            )
                             Text("5분 더")
+                                .foregroundStyle(Sources.label)
+                                .font(.system(size: 16, weight: .medium))
+                        case .running:
+                            Button {
+                                viewModel.stopTimer()
+                            } label: {
+                                HStack {
+                                    Rectangle()
+                                        .frame(width: 3, height: 24)
+                                        .foregroundStyle(Sources.primary)
+                                        .clipShape(RoundedRectangle(cornerRadius: 3))
+                                    Rectangle()
+                                        .frame(width: 3, height: 24)
+                                        .foregroundStyle(Sources.primary)
+                                        .clipShape(RoundedRectangle(cornerRadius: 3))
+                                }
                                 .frame(width: 60, height: 60)
-                        }
-                        .clipShape(
-                            Capsule()
-                        )
-                    case .running:
-                        Button {
-                            viewModel.stopTimer()
-                        } label: {
+                            }
+                            .background(Sources.darkPrimary)
+                            .clipShape(
+                                Capsule()
+                            )
                             Text("정지")
-                                .frame(width: 60, height: 60)
-                        }
-                        .clipShape(
-                            Capsule()
-                        )
-                    case .stopped:
-                        Button {
-                            viewModel.startTimer()
-                        } label: {
+                                .foregroundStyle(Sources.label)
+                                .font(.system(size: 16, weight: .medium))
+                        case .stopped:
+                            Button {
+                                viewModel.startTimer()
+                            } label: {
+                                Sources.triangle
+                                    .frame(width: 60, height: 60)
+                            }
+                            .background(.white)
+                            .clipShape(
+                                Capsule()
+                            )
                             Text("시작")
-                                .frame(width: 60, height: 60)
+                                .foregroundStyle(Sources.label)
+                                .font(.system(size: 16, weight: .medium))
                         }
-                        .clipShape(
-                            Capsule()
-                        )
                     }
                 }
                 .frame(width: 300)
                 .padding(.bottom, 50)
             }
             .frame(maxWidth: 500, maxHeight: 500)
-            .background(Sources.background)
             .sheet(isPresented: $viewModel.isShowTimeSetterDialog) {
                 VStack {
                     Text("타이머 시간 10초로 설정")
@@ -115,6 +153,7 @@ struct TimerView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Sources.background)
     }
 }
 

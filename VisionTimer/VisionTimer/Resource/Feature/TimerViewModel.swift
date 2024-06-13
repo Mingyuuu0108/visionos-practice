@@ -19,13 +19,13 @@ class TimerViewModel: ObservableObject {
         case stopped
     }
     @Published var timerState: TimerState = .initialized
-    @Published var timeRemaining: Int = 0
+    @Published var timeRemaining: UInt = 0
     
     private var timer: Timer?
     private var player: AVAudioPlayer?
     
     // Timer method
-    func setTimer(time: Int) {
+    func setTimer(time: UInt) {
         timeRemaining = time
         timeRemaining > 0 ? (timerState = .stopped) : (timerState = .initialized)
     }
@@ -37,8 +37,9 @@ class TimerViewModel: ObservableObject {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             
-            self.timeRemaining -= 1
-            if self.timeRemaining < 1 {
+            if self.timeRemaining > 0 {
+                self.timeRemaining -= 1
+            } else {
                 self.timer?.invalidate()
                 self.player?.stop()
                 self.playAlarmSound()
@@ -92,6 +93,12 @@ class TimerViewModel: ObservableObject {
     }
     
     // UI method
+    func onTapTimeSetter() {
+        if timerState == .initialized {
+            isShowTimeSetterDialog.toggle()
+        }
+    }
+    
     func getTimeRemaining() -> String {
         let min = (timeRemaining / 60) < 10 ? "0\(timeRemaining / 60)" : "\(timeRemaining / 60)"
         let sec = (timeRemaining % 60) < 10 ? "0\(timeRemaining % 60)" : "\(timeRemaining % 60)"
