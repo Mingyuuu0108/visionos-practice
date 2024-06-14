@@ -12,9 +12,9 @@ struct VisionTimerApp: App {
     var body: some Scene {
         WindowGroup {
             TimerView()
-                .persistentSystemOverlays(.hidden)
                 .preferredSurroundingsEffect(.systemDark)
+                .persistentSystemOverlays(.hidden)
         }
-        .windowStyle(.automatic)
+        .windowStyle(.plain)
     }
 }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct TimerView: View {
     @StateObject private var viewModel = TimerViewModel()
-    @State private var time: UInt = 10
+    @GestureState private var dragAmount = CGSize.zero
+    @State private var currentPosition = CGSize.zero
+    @State private var time: UInt = 0
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -24,13 +26,13 @@ struct TimerView: View {
             }
             .padding(.top, 50)
             if viewModel.timerState == .finished {
-                Text("일어나세요!!")
+                Text("일어나요!!")
                     .foregroundStyle(Sources.label)
                     .font(.system(size: 100, weight: .semibold))
-                    .offset(x: viewModel.isShaking ? -6 : 6)
+                    .offset(x: viewModel.isShaking ? -2 : 2)
                     .onAppear {
                         withAnimation(.linear(duration: 0.1).repeatCount(60)) {
-                            viewModel.isShaking = true
+                            viewModel.isShaking.toggle()
                         }
                     }
             } else {
@@ -39,6 +41,9 @@ struct TimerView: View {
                     .font(.system(size: 120, weight: .semibold))
                     .onTapGesture {
                         viewModel.onTapTimeSetter()
+                    }
+                    .onAppear {
+                        viewModel.isShaking.toggle()
                     }
             }
             (viewModel.timerState == .finished ? Sources.cat2 : Sources.cat1)
@@ -49,7 +54,9 @@ struct TimerView: View {
                 VStack(spacing: 10) {
                     if viewModel.timerState != .initialized {
                         Button {
-                            viewModel.resetTimer()
+                            viewModel.timerState == .finished ?
+                            viewModel.resetTimer() :
+                            viewModel.isShowResetDialog.toggle()
                         } label: {
                             ZStack {
                                 Rectangle()
@@ -141,17 +148,60 @@ struct TimerView: View {
                 Text("타이머 시간 설정")
                     .foregroundStyle(Sources.label)
                     .font(.system(size: 32, weight: .medium))
+                
+                ZStack {
+                    Circle()
+                        .frame(width: 300, height: 300)
+                        .foregroundStyle(.red)
+                    
+                    Circle()
+                        .frame(width: 100, height: 100)
+                        .foregroundStyle(.blue)
+                        .offset(
+                            x: currentPosition.width + dragAmount.width,
+                            y: currentPosition.height + dragAmount.height
+                        )
+                        .animation(.easeInOut, value: dragAmount)
+                        .gesture(
+                            DragGesture()
+                                .updating($dragAmount) { value, state, _ in
+                                    let newTranslation = value.translation
+                                    
+                                    // radius
+                                    let clockRadius: CGFloat = 150
+                                    let pointerRadius: CGFloat = 50
+                                    let limit = clockRadius - pointerRadius
+                                    let newX = currentPosition.width + newTranslation.width
+                                    let newY = currentPosition.height + newTranslation.height
+                                    
+                                    if sqrt(newX * newX + newY * newY) <= limit {
+                                        state = newTranslation
+                                    } else {
+                                        let angle = atan2(newTranslation.height, newTranslation.width)
+                                        state = CGSize(
+                                            width: cos(angle) * limit - currentPosition.width,
+                                            height: sin(angle) * limit - currentPosition.height
+                                        )
+                                    }
+                                }
+                                .onEnded { _ in
+                                    currentPosition = .zero
+                                }
+                        )
+                }
+                .frame(width: 300, height: 300)
+                
                 Spacer()
                 HStack(spacing: 20) {
                     Button {
-                        viewModel.isShowTimeSetterDialog = false
+                        viewModel.isShowTimeSetterDialog.toggle()
                     } label: {
                         Text("닫기")
                             .foregroundStyle(Sources.label)
                             .font(.system(size: 18, weight: .semibold))
                     }
                     Button {
-                        viewModel.isShowTimeSetterDialog = false
+                        viewModel.isShowTimeSetterDialog.toggle()
                         viewModel.setTimer(time: time)
                     } label: {
                         Text("설정")
@@ -171,19 +221,20 @@ struct TimerView: View {
                 Text("타이머를 초기화 하시겠습니까?")
                     .foregroundStyle(Sources.label)
                     .font(.system(size: 24, weight: .medium))
+                    .padding(.top, 32)
+                Spacer()
                 HStack(spacing: 20) {
                     Button("취소") {
-                        viewModel.isShowResetDialog = false
+                        viewModel.isShowResetDialog.toggle()
                     }
-                    .frame(width: 100)
                     Button("확인") {
-                        viewModel.isShowResetDialog = false
+                        viewModel.isShowResetDialog.toggle()
                         viewModel.resetTimer()
                     }
-                    .frame(width: 100)
                 }
+                .padding(.bottom, 32)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(width: 380, height: 160)
         }
     }
 }
