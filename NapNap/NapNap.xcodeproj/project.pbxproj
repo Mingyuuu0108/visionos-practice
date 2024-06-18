@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52D3F1202C216AB2000A735C /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3F11F2C216AB2000A735C /* RealityKitContent */; };
+		52D3F1222C216AB2000A735C /* NapNapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1212C216AB2000A735C /* NapNapApp.swift */; };
+		52D3F1242C216AB2000A735C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1232C216AB2000A735C /* ContentView.swift */; };
+		52D3F1382C216AB4000A735C /* NapNapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1372C216AB4000A735C /* NapNapTests.swift */; };
+		52D3F1422C216AEC000A735C /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1412C216AEC000A735C /* TimerViewModel.swift */; };
+		52D3F1442C216B03000A735C /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1432C216B03000A735C /* Sources.swift */; };
+		52D3F1492C216B27000A735C /* Rain.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52D3F1452C216B27000A735C /* Rain.wav */; };
+		52D3F14B2C216B27000A735C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D3F1472C216B27000A735C /* Assets.xcassets */; };
+		52D3F14C2C216B27000A735C /* Alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 52D3F1482C216B27000A735C /* Alarm.wav */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52D3F1342C216AB4000A735C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D3F1122C216AB2000A735C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D3F1192C216AB2000A735C;
+			remoteInfo = NapNap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52D3F11A2C216AB2000A735C /* NapNap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NapNap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D3F11E2C216AB2000A735C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		52D3F1212C216AB2000A735C /* NapNapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapNapApp.swift; sourceTree = "<group>"; };
+		52D3F1232C216AB2000A735C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		52D3F12E2C216AB4000A735C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D3F1332C216AB4000A735C /* NapNapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapNapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D3F1372C216AB4000A735C /* NapNapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapNapTests.swift; sourceTree = "<group>"; };
+		52D3F1412C216AEC000A735C /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		52D3F1432C216B03000A735C /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
+		52D3F1452C216B27000A735C /* Rain.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Rain.wav; sourceTree = "<group>"; };
+		52D3F1472C216B27000A735C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52D3F1482C216B27000A735C /* Alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Alarm.wav; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52D3F1172C216AB2000A735C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D3F1202C216AB2000A735C /* RealityKitContent in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D3F1302C216AB4000A735C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		521E22E02C216CBD0092EDDD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				52D3F12E2C216AB4000A735C /* Info.plist */,
+				52D3F1482C216B27000A735C /* Alarm.wav */,
+				52D3F1472C216B27000A735C /* Assets.xcassets */,
+				52D3F1452C216B27000A735C /* Rain.wav */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		521E22E12C216CC10092EDDD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				521E22E22C216CFB0092EDDD /* Application */,
+				521E22E32C216CFE0092EDDD /* Feature */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		521E22E22C216CFB0092EDDD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				52D3F1212C216AB2000A735C /* NapNapApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		521E22E32C216CFE0092EDDD /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				52D3F1432C216B03000A735C /* Sources.swift */,
+				52D3F1412C216AEC000A735C /* TimerViewModel.swift */,
+				52D3F1232C216AB2000A735C /* ContentView.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		52D3F1112C216AB2000A735C = {
+			isa = PBXGroup;
+			children = (
+				52D3F11C2C216AB2000A735C /* NapNap */,
+				52D3F11D2C216AB2000A735C /* Packages */,
+				52D3F1362C216AB4000A735C /* NapNapTests */,
+				52D3F11B2C216AB2000A735C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52D3F11B2C216AB2000A735C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52D3F11A2C216AB2000A735C /* NapNap.app */,
+				52D3F1332C216AB4000A735C /* NapNapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52D3F11C2C216AB2000A735C /* NapNap */ = {
+			isa = PBXGroup;
+			children = (
+				521E22E02C216CBD0092EDDD /* Source */,
+				521E22E12C216CC10092EDDD /* Resource */,
+			);
+			path = NapNap;
+			sourceTree = "<group>";
+		};
+		52D3F11D2C216AB2000A735C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				52D3F11E2C216AB2000A735C /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		52D3F1362C216AB4000A735C /* NapNapTests */ = {
+			isa = PBXGroup;
+			children = (
+				52D3F1372C216AB4000A735C /* NapNapTests.swift */,
+			);
+			path = NapNapTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52D3F1192C216AB2000A735C /* NapNap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D3F13B2C216AB4000A735C /* Build configuration list for PBXNativeTarget "NapNap" */;
+			buildPhases = (
+				52D3F1162C216AB2000A735C /* Sources */,
+				52D3F1172C216AB2000A735C /* Frameworks */,
+				52D3F1182C216AB2000A735C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NapNap;
+			packageProductDependencies = (
+				52D3F11F2C216AB2000A735C /* RealityKitContent */,
+			);
+			productName = NapNap;
+			productReference = 52D3F11A2C216AB2000A735C /* NapNap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52D3F1322C216AB4000A735C /* NapNapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D3F13E2C216AB4000A735C /* Build configuration list for PBXNativeTarget "NapNapTests" */;
+			buildPhases = (
+				52D3F12F2C216AB4000A735C /* Sources */,
+				52D3F1302C216AB4000A735C /* Frameworks */,
+				52D3F1312C216AB4000A735C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52D3F1352C216AB4000A735C /* PBXTargetDependency */,
+			);
+			name = NapNapTests;
+			productName = NapNapTests;
+			productReference = 52D3F1332C216AB4000A735C /* NapNapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52D3F1122C216AB2000A735C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					52D3F1192C216AB2000A735C = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					52D3F1322C216AB4000A735C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 52D3F1192C216AB2000A735C;
+					};
+				};
+			};
+			buildConfigurationList = 52D3F1152C216AB2000A735C /* Build configuration list for PBXProject "NapNap" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52D3F1112C216AB2000A735C;
+			productRefGroup = 52D3F11B2C216AB2000A735C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52D3F1192C216AB2000A735C /* NapNap */,
+				52D3F1322C216AB4000A735C /* NapNapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52D3F1182C216AB2000A735C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D3F14C2C216B27000A735C /* Alarm.wav in Resources */,
+				52D3F1492C216B27000A735C /* Rain.wav in Resources */,
+				52D3F14B2C216B27000A735C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D3F1312C216AB4000A735C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52D3F1162C216AB2000A735C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D3F1422C216AEC000A735C /* TimerViewModel.swift in Sources */,
+				52D3F1242C216AB2000A735C /* ContentView.swift in Sources */,
+				52D3F1222C216AB2000A735C /* NapNapApp.swift in Sources */,
+				52D3F1442C216B03000A735C /* Sources.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D3F12F2C216AB4000A735C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D3F1382C216AB4000A735C /* NapNapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52D3F1352C216AB4000A735C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D3F1192C216AB2000A735C /* NapNap */;
+			targetProxy = 52D3F1342C216AB4000A735C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		52D3F1392C216AB4000A735C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 1.1;
+			};
+			name = Debug;
+		};
+		52D3F13A2C216AB4000A735C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 1.1;
+			};
+			name = Release;
+		};
+		52D3F13C2C216AB4000A735C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H4CNC953L3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Source/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = run.mingyu.NapNap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Debug;
+		};
+		52D3F13D2C216AB4000A735C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H4CNC953L3;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Source/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = run.mingyu.NapNap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+			};
+			name = Release;
+		};
+		52D3F13F2C216AB4000A735C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H4CNC953L3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = run.mingyu.NapNapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NapNap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NapNap";
+				XROS_DEPLOYMENT_TARGET = 1.1;
+			};
+			name = Debug;
+		};
+		52D3F1402C216AB4000A735C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H4CNC953L3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = run.mingyu.NapNapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NapNap.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NapNap";
+				XROS_DEPLOYMENT_TARGET = 1.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52D3F1152C216AB2000A735C /* Build configuration list for PBXProject "NapNap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D3F1392C216AB4000A735C /* Debug */,
+				52D3F13A2C216AB4000A735C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D3F13B2C216AB4000A735C /* Build configuration list for PBXNativeTarget "NapNap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D3F13C2C216AB4000A735C /* Debug */,
+				52D3F13D2C216AB4000A735C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D3F13E2C216AB4000A735C /* Build configuration list for PBXNativeTarget "NapNapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D3F13F2C216AB4000A735C /* Debug */,
+				52D3F1402C216AB4000A735C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52D3F11F2C216AB2000A735C /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 52D3F1122C216AB2000A735C /* Project object */;
+}
