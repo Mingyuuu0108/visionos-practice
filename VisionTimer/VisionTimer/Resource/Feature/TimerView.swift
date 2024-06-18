@@ -11,7 +11,6 @@ struct TimerView: View {
     @StateObject private var viewModel = TimerViewModel()
     @GestureState private var dragAmount = CGSize.zero
     @State private var currentPosition = CGSize.zero
-    @State private var time: UInt = 0
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -144,54 +143,85 @@ struct TimerView: View {
             .padding(.bottom, 50)
         }
         .sheet(isPresented: $viewModel.isShowTimeSetterDialog) {
-            VStack {
-                Text("타이머 시간 설정")
+            VStack(spacing: 0) {
+                Text("\(viewModel.getTimeRemaining())")
                     .foregroundStyle(Sources.label)
-                    .font(.system(size: 32, weight: .medium))
-                
-                ZStack {
-                    Circle()
-                        .frame(width: 300, height: 300)
-                        .foregroundStyle(.red)
-                    
-                    Circle()
-                        .frame(width: 100, height: 100)
-                        .foregroundStyle(.blue)
-                        .offset(
-                            x: currentPosition.width + dragAmount.width,
-                            y: currentPosition.height + dragAmount.height
-                        )
-                        .animation(.easeInOut, value: dragAmount)
-                        .gesture(
-                            DragGesture()
-                                .updating($dragAmount) { value, state, _ in
-                                    let newTranslation = value.translation
-                                    
-                                    // radius
-                                    let clockRadius: CGFloat = 150
-                                    let pointerRadius: CGFloat = 50
-                                    let limit = clockRadius - pointerRadius
-                                    let newX = currentPosition.width + newTranslation.width
-                                    let newY = currentPosition.height + newTranslation.height
-                                    
-                                    if sqrt(newX * newX + newY * newY) <= limit {
-                                        state = newTranslation
-                                    } else {
-                                        let angle = atan2(newTranslation.height, newTranslation.width)
-                                        state = CGSize(
-                                            width: cos(angle) * limit - currentPosition.width,
-                                            height: sin(angle) * limit - currentPosition.height
-                                        )
+                    .font(.system(size: 80, weight: .semibold))
+                HStack {
+                    Text("-1분")
+                        .foregroundStyle(Sources.label)
+                        .font(.system(size: 24, weight: .medium))
+                        .onTapGesture {
+                            viewModel.timeRemaining > 60 ?
+                            (viewModel.timeRemaining -= 60) :
+                            (viewModel.timeRemaining = 0)
+                        }
+                    ZStack {
+                        Circle()
+                            .frame(width: 300, height: 300)
+                            .foregroundStyle(.clear)
+                        Circle()
+                            .frame(width: 200, height: 200)
+                            .foregroundStyle(.blue)
+                            .offset(
+                                x: currentPosition.width + dragAmount.width,
+                                y: currentPosition.height + dragAmount.height
+                            )
+                            .animation(.easeInOut, value: dragAmount)
+                            .gesture(
+                                DragGesture()
+                                    .updating($dragAmount) { value, state, _ in
+                                        let newTranslation = value.translation
+                                        
+                                        let clockRadius: CGFloat = 150
+                                        let pointerRadius: CGFloat = 100
+                                        let limit = clockRadius - pointerRadius
+                                        let newX = currentPosition.width + newTranslation.width
+                                        let newY = currentPosition.height + newTranslation.height
+                                        
+                                        let distance = sqrt(newX * newX + newY * newY)
+                                        
+                                        if distance <= limit {
+                                            state = newTranslation
+                                        } else {
+                                            let angle = atan2(newTranslation.height, newTranslation.width)
+                                            state = CGSize(
+                                                width: cos(angle) * limit - currentPosition.width,
+                                                height: sin(angle) * limit - currentPosition.height
+                                            )
+                                        }
+                                        
+                                        let angleNewX = currentPosition.width + value.translation.width
+                                        let angleNewY = currentPosition.height + value.translation.height
+                                        let angle = atan2(angleNewY, angleNewX)
+                                        
+                                        if distance >= limit {
+                                            if abs(angle) < .pi / 16 {
+                                                DispatchQueue.main.async {
+                                                    viewModel.timeRemaining += 60
+                                                }
+                                            } else if abs(angle) > 15 * .pi / 16 {
+                                                DispatchQueue.main.async {
+                                                    viewModel.timeRemaining > 60 ?
+                                                    (viewModel.timeRemaining -= 60) :
+                                                    (viewModel.timeRemaining = 0)
+                                                }
+                                            }
+                                        }
                                     }
-                                }
-                                .onEnded { _ in
-                                    currentPosition = .zero
-                                }
-                        )
+                                    .onEnded { _ in
+                                        currentPosition = .zero
+                                    }
+                            )
+                    }
+                    .frame(width: 300, height: 300)
+                    Text("+1분")
+                        .foregroundStyle(Sources.label)
+                        .font(.system(size: 24, weight: .medium))
+                        .onTapGesture {
+                            viewModel.timeRemaining += 60
+                        }
                 }
-                .frame(width: 300, height: 300)
-                
-                Spacer()
                 HStack(spacing: 20) {
                     Button {
                         viewModel.isShowTimeSetterDialog.toggle()
@@ -202,19 +232,20 @@ struct TimerView: View {
                     }
                     Button {
                         viewModel.isShowTimeSetterDialog.toggle()
-                        viewModel.setTimer(time: time)
+                        viewModel.setTimer(time: viewModel.timeRemaining)
                     } label: {
                         Text("설정")
                             .foregroundStyle(
-                                time == 0 ? Sources.darkPrimary : Sources.primary
+                                viewModel.timeRemaining == 0 ? Sources.darkPrimary : Sources.primary
                             )
                             .font(.system(size: 18, weight: .semibold))
                     }
-                    .disabled(time == 0)
+                    .disabled(viewModel.timeRemaining == 0)
                 }
+                .padding(.top, 20)
             }
             .padding(32)
-            .frame(width: 500, height: 500)
+            .frame(width: 500)
         }
         .sheet(isPresented: $viewModel.isShowResetDialog) {
             VStack {

@@ -101,10 +101,17 @@ class TimerViewModel: ObservableObject {
     }
     
     func getTimeRemaining() -> String {
-        let min = (timeRemaining / 60) < 10 ? "0\(timeRemaining / 60)" : "\(timeRemaining / 60)"
-        let sec = (timeRemaining % 60) < 10 ? "0\(timeRemaining % 60)" : "\(timeRemaining % 60)"
-        return "\(min):\(sec)"
+        let hours = timeRemaining / 3600
+        let minutes = (timeRemaining % 3600) / 60
+        let seconds = timeRemaining % 60
+        
+        let hourString = hours > 0 ? "\(hours):" : ""
+        let minuteString = String(format: "%02d", minutes)
+        let secondString = String(format: "%02d", seconds)
+        
+        return "\(hourString)\(minuteString):\(secondString)"
     }
+
     
     func getAlarmEndTime() -> String {
         let finishingTime = Date().addingTimeInterval(TimeInterval(timeRemaining))
