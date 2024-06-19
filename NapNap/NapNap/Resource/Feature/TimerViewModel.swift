@@ -5,15 +5,16 @@
 //  Created by 이민규 on 6/18/24.
 //
 
-import SwiftUI
+import Foundation
 import AVFAudio
 
-class TimerViewModel: ObservableObject {
-    @Published var isShowTimeSetterDialog: Bool = false
-    @Published var isShowResetDialog: Bool = false
-    @Published var isShaking = false
-    @Published var showImmersiveSpace = false
-    @Published var immersiveSpaceIsShown = false
+@Observable
+class TimerViewModel {
+    var isShowTimeSetterDialog: Bool = false
+    var isShowResetDialog: Bool = false
+    var isShaking = false
+    var showImmersiveSpace = false
+    var immersiveSpaceIsShown = false
     
     enum TimerState {
         case initialized
@@ -21,8 +22,9 @@ class TimerViewModel: ObservableObject {
         case running
         case stopped
     }
-    @Published var timerState: TimerState = .initialized
-    @Published var timeRemaining: UInt = 0
+    var timerState: TimerState = .initialized
+    var timeRemaining: UInt = 0
+    var backgroundMusicVolume: UInt = 0
     
     private var timer: Timer?
     private var player: AVAudioPlayer?
@@ -62,7 +64,7 @@ class TimerViewModel: ObservableObject {
         guard let url = Bundle.main.url(
             forResource: Sources.rain[0], withExtension: Sources.rain[1]
         ) else {
-            print("파일 없음")
+            print("Background music file not found")
             return
         }
         do {
@@ -79,7 +81,10 @@ class TimerViewModel: ObservableObject {
     private func playAlarmSound() {
         guard let url = Bundle.main.url(
             forResource: Sources.alarm[0], withExtension: Sources.alarm[1]
-        ) else { return }
+        ) else {
+            print("Alarm sound file not found")
+            return
+        }
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player?.play()

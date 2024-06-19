@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct TimerView: View {
-    
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
-    
-    @StateObject private var viewModel = TimerViewModel()
     @GestureState private var dragAmount = CGSize.zero
     @State private var currentPosition = CGSize.zero
+    @State private var viewModel = TimerViewModel()
     
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
