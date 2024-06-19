@@ -9,9 +9,6 @@ import SwiftUI
 
 struct TimerView: View {
     
-    @State private var showImmersiveSpace = false
-    @State private var immersiveSpaceIsShown = false
-
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissImmersiveSpace) var dismissImmersiveSpace
     
@@ -148,12 +145,6 @@ struct TimerView: View {
             }
             .frame(width: 300)
             .padding(.bottom, 50)
-            
-            Toggle("Show ImmersiveSpace", isOn: $showImmersiveSpace)
-                .font(.title)
-                .frame(width: 360)
-                .padding(24)
-                .glassBackgroundEffect()
         }
         .sheet(isPresented: $viewModel.isShowTimeSetterDialog) {
             VStack(spacing: 0) {
@@ -175,7 +166,7 @@ struct TimerView: View {
                             .foregroundStyle(.clear)
                         Circle()
                             .frame(width: 200, height: 200)
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(Sources.label.opacity(0.5))
                             .offset(
                                 x: currentPosition.width + dragAmount.width,
                                 y: currentPosition.height + dragAmount.height
@@ -280,21 +271,22 @@ struct TimerView: View {
             }
             .frame(width: 380, height: 160)
         }
-        .onChange(of: showImmersiveSpace) { _, newValue in
+        .onChange(of: viewModel.timerState) { _, newValue in
             Task {
-                if newValue {
-                    switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                if newValue == .running {
+                    switch await openImmersiveSpace(id: "BlindfoldSpace") {
                     case .opened:
-                        immersiveSpaceIsShown = true
+                        viewModel.immersiveSpaceIsShown = true
                     case .error, .userCancelled:
                         fallthrough
                     @unknown default:
-                        immersiveSpaceIsShown = false
-                        showImmersiveSpace = false
+                        viewModel.immersiveSpaceIsShown = false
+                        viewModel.showImmersiveSpace = false
+                        
                     }
-                } else if immersiveSpaceIsShown {
+                } else if viewModel.immersiveSpaceIsShown {
                     await dismissImmersiveSpace()
-                    immersiveSpaceIsShown = false
+                    viewModel.immersiveSpaceIsShown = false
                 }
             }
         }

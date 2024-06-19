@@ -17,8 +17,8 @@ struct NapNapApp: App {
         }
         .windowStyle(.plain)
 
-        ImmersiveSpace(id: "ImmersiveSpace") {
+        ImmersiveSpace(id: "BlindfoldSpace") {
             EmptyView()
-        }.immersionStyle(selection: .constant(.full), in: .full)
+        }.immersionStyle(selection: .constant(.progressive), in: .progressive)
     }
 }

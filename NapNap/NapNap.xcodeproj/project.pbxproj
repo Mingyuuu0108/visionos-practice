@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		52D3F1202C216AB2000A735C /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = 52D3F11F2C216AB2000A735C /* RealityKitContent */; };
 		52D3F1222C216AB2000A735C /* NapNapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1212C216AB2000A735C /* NapNapApp.swift */; };
-		52D3F1242C216AB2000A735C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1232C216AB2000A735C /* ContentView.swift */; };
+		52D3F1242C216AB2000A735C /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1232C216AB2000A735C /* TimerView.swift */; };
 		52D3F1382C216AB4000A735C /* NapNapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1372C216AB4000A735C /* NapNapTests.swift */; };
 		52D3F1422C216AEC000A735C /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1412C216AEC000A735C /* TimerViewModel.swift */; };
 		52D3F1442C216B03000A735C /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D3F1432C216B03000A735C /* Sources.swift */; };
@@ -32,7 +32,7 @@
 		52D3F11A2C216AB2000A735C /* NapNap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NapNap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D3F11E2C216AB2000A735C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		52D3F1212C216AB2000A735C /* NapNapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapNapApp.swift; sourceTree = "<group>"; };
-		52D3F1232C216AB2000A735C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		52D3F1232C216AB2000A735C /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		52D3F12E2C216AB4000A735C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52D3F1332C216AB4000A735C /* NapNapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NapNapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D3F1372C216AB4000A735C /* NapNapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NapNapTests.swift; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 		521E22E32C216CFE0092EDDD /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				52D3F1232C216AB2000A735C /* TimerView.swift */,
 				52D3F1432C216B03000A735C /* Sources.swift */,
 				52D3F1412C216AEC000A735C /* TimerViewModel.swift */,
-				52D3F1232C216AB2000A735C /* ContentView.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -249,7 +249,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52D3F1422C216AEC000A735C /* TimerViewModel.swift in Sources */,
-				52D3F1242C216AB2000A735C /* ContentView.swift in Sources */,
+				52D3F1242C216AB2000A735C /* TimerView.swift in Sources */,
 				52D3F1222C216AB2000A735C /* NapNapApp.swift in Sources */,
 				52D3F1442C216B03000A735C /* Sources.swift in Sources */,
 			);

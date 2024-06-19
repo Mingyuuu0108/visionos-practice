@@ -12,6 +12,8 @@ class TimerViewModel: ObservableObject {
     @Published var isShowTimeSetterDialog: Bool = false
     @Published var isShowResetDialog: Bool = false
     @Published var isShaking = false
+    @Published var showImmersiveSpace = false
+    @Published var immersiveSpaceIsShown = false
     
     enum TimerState {
         case initialized
@@ -66,6 +68,7 @@ class TimerViewModel: ObservableObject {
         do {
             player = try AVAudioPlayer(contentsOf: url)
             player?.numberOfLoops = -1
+            player?.volume = 0.2
             player?.play()
             print("play background music")
         } catch {
